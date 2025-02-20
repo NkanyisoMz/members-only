@@ -1,0 +1,11 @@
+<h1>Secret Posts</h1>
+<% @posts.each do |post| %>
+  <p><%= post.content %></p>
+  <% if user_signed_in? %>
+    <p><strong>Author:</strong> <%= post.user.email %></p>
+  <% else %>
+    <p><em>Sign in to see the author</em></p>
+  <% end %>
+<% end %>
+
+<%= link_to "New Post", new_post_path if user_signed_in? %>
